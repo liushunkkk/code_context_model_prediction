@@ -38,7 +38,7 @@ def read_xml(url):
     for event in events:
         # 定义表格存储每一行数据
         da = [event.get("event_kind"), event.get("event_structure_kind"),
-              event.get("event_structure_handle"), event.get("event_start_date")]
+              event.get("event_structure_handle"), event.get("event_start_date"), event.get("event_kind")]
         # 存储每一行数据
         data.append(da)
     timestamp = root.find('timestamp')
@@ -103,6 +103,7 @@ def main_fun():
                     for line in effective_data:
                         element = ET.SubElement(code_elements, "element")
                         element.set('event_start_date', line[3])
+                        element.set('event_kind', line[4])
                         element.text = line[2]
                     # 创建XML树
                     tree = ET.ElementTree(root)
