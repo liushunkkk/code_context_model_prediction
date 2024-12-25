@@ -125,44 +125,44 @@ mode = 'final_'
 # remove_empty_dir('my_ecf')
 # main_func('my_ecf', mode=mode)
 # remove_empty_dir('my_pde')
-main_func('my_pde', mode=mode)
-# remove_empty_dir('my_platform')
-main_func('my_platform', mode=mode)
-# remove_empty_dir('my_mylyn')
-main_func('my_mylyn', mode=mode)
+# main_func('my_pde', mode=mode)
+# # remove_empty_dir('my_platform')
+# main_func('my_platform', mode=mode)
+# # remove_empty_dir('my_mylyn')
+# main_func('my_mylyn', mode=mode)
 
 
 
-# mode = ''
-# project_name = 'my_mylyn'
-# first_times = []
-# last_times = []
-#
-# project_path = join(root_path, project_name)
-# info_dir_path = join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), f'{mode}model_info')
-# # make_dir(info_dir_path)
-# strategy_dir_list = os.listdir(project_path)
-# for strategy_dir in strategy_dir_list:
-#     strategy_path = join(project_path, strategy_dir)
-#     info_strategy_path = join(info_dir_path, strategy_dir)
-#     make_dir(info_strategy_path)
-#     model_dir_list = os.listdir(strategy_path)
-#     model_dir_list = sorted(model_dir_list, key=lambda x: int(x))
-#     info_root = ET.Element("context_model_info")
-#     model_total = 0
-#     component_root = 0
-#     for model_dir in model_dir_list:
-#         model_path = join(strategy_path, model_dir, 'code_context_model.xml')
-#         if not os.path.exists(model_path):
-#             continue
-#         model_total += 1
-#         info_model = ET.SubElement(info_root, 'code_context_model')
-#         info_model.set('id', model_dir)
-#         tree = ET.parse(model_path)  # 拿到xml树
-#         # 获取XML文档的根元素
-#         root = tree.getroot()
-#         first_times.append(root.get('first_time'))
-#         last_times.append(root.get('last_time'))
-#         print(root.get('first_time') == root.get('last_time'))
-# print(min(first_times), max(first_times))
-# print(min(last_times), max(last_times))
+mode = 'final_'
+project_name = 'my_mylyn'
+first_times = []
+last_times = []
+
+project_path = join(root_path, project_name)
+info_dir_path = join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), f'{mode}model_info')
+# make_dir(info_dir_path)
+strategy_dir_list = os.listdir(project_path)
+for strategy_dir in strategy_dir_list:
+    strategy_path = join(project_path, strategy_dir)
+    info_strategy_path = join(info_dir_path, strategy_dir)
+    make_dir(info_strategy_path)
+    model_dir_list = os.listdir(strategy_path)
+    model_dir_list = sorted(model_dir_list, key=lambda x: int(x))
+    info_root = ET.Element("context_model_info")
+    model_total = 0
+    component_root = 0
+    for model_dir in model_dir_list:
+        model_path = join(strategy_path, model_dir, 'code_context_model.xml')
+        if not os.path.exists(model_path):
+            continue
+        model_total += 1
+        info_model = ET.SubElement(info_root, 'code_context_model')
+        info_model.set('id', model_dir)
+        tree = ET.parse(model_path)  # 拿到xml树
+        # 获取XML文档的根元素
+        root = tree.getroot()
+        first_times.append(root.get('first_time'))
+        last_times.append(root.get('last_time'))
+        # print(root.get('first_time') == root.get('last_time'))
+print(min(first_times), max(first_times))
+print(min(last_times), max(last_times))
